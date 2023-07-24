@@ -1,0 +1,14 @@
+.radio-box {
+  display: flex;
+  padding: 10px 0;
+  justify-content: center;
+  gap: 10px;
+  flex-direction: column;
+  .radio-item {
+    display: flex;
+    gap: 10px;
+  }
+}
+.form-group {
+  padding: 15px 0;
+}

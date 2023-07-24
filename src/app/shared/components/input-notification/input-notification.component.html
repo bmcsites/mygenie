@@ -1,0 +1,5 @@
+<div *ngIf="inputObject && controls" class="text-danger">
+  <ng-container *ngFor="let inputObj of inputObject.notificationList">
+    <small *ngIf="controls[inputObject.name].errors?.[inputObj.notificationType]">{{inputObj.text}}</small>
+  </ng-container>
+</div>

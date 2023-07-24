@@ -1,0 +1,199 @@
+[
+  {
+    "name": "name",
+    "label": "שם מלא",
+    "inputType": "text",
+    "mask": null,
+    "maxlength": null,
+    "thousandSeparator": null,
+    "controlName": "name",
+    "notificationList": [
+      {
+        "notificationType": "required",
+        "text": "שם הוא שדה חובה"
+      }
+    ]
+  },
+  {
+    "name": "email",
+    "label": "אימייל",
+    "inputType": "email",
+    "controlName": "email",
+    "mask": null,
+    "maxlength": null,
+    "thousandSeparator": null,
+    "notificationList": [
+      {
+        "notificationType": "email",
+        "text": "Email is not valid"
+      },
+      {
+        "notificationType": "required",
+        "text": "אימייל הוא שדה חובה"
+      }
+    ]
+  },
+  {
+    "name": "phone",
+    "label": "טלפון נייד",
+    "inputType": "text",
+    "controlName": "phone",
+    "mask": "000-0000000",
+    "maxlength": null,
+    "thousandSeparator": null,
+    "notificationList": [
+      {
+        "notificationType": "required",
+        "text": "טלפון הוא שדה חובה"
+      }
+    ]
+  },
+  {
+    "name": "youngAge",
+    "label": "מה הגיל שלך (במידה ואתם זוג מה הגיל הצעיר מבינכם)",
+    "inputType": "text",
+    "controlName": "youngAge",
+    "mask": "00",
+    "maxlength": null,
+    "thousandSeparator": null,
+    "notificationList": [
+      {
+        "notificationType": "required",
+        "text": "שדה חובה"
+      }
+    ]
+  },
+  {
+    "name": "existingPropertyValue",
+    "label": "במידה ויש לכם נכס? כמה הוא שווה? (אם אין, אנא רישמו 0) ",
+    "inputType": "text",
+    "mask": "separator",
+    "maxlength": 9,
+    "thousandSeparator": ",",
+    "controlName": "existingPropertyValue",
+    "notificationList": [
+      {
+        "notificationType": "required",
+        "text": "שדה חובה"
+      }
+    ]
+  },
+  {
+    "name": "mortgage",
+    "label": "האם יש לכם משכנתא? אם כן, מה היתרה העדכנית שלה?  (אם אין, אנא רישמו 0) ",
+    "inputType": "text",
+    "mask": "separator",
+    "maxlength": 9,
+    "thousandSeparator": ",",
+    "controlName": "mortgage",
+    "notificationList": [
+      {
+        "notificationType": "required",
+        "text": "שדה חובה"
+      }
+    ]
+  },
+  {
+    "name": "loan",
+    "label": "מהי יתרת סכום כל ההלוואות שיש לכם ואתם מעוניינים לסלק לקראת הרכישה הבאה (הלוואות בנקאיות, חוץ בנקאיות, חובות אחרים)",
+    "inputType": "text",
+    "mask": "separator",
+    "maxlength": 9,
+    "thousandSeparator": ",",
+    "controlName": "loan",
+    "notificationList": [
+      {
+        "notificationType": "required",
+        "text": "שדה חובה"
+      }
+    ]
+  },
+  {
+    "name": "salaryReturn",
+    "label": "מהו ההחזר החודשי לכל ההלוואות שלכם (הלוואות עם יתרת תקופה יותר משנה וחצי)?",
+    "moreLabel": "לא כולל את המשכנתא",
+    "inputType": "text",
+    "mask": "separator",
+    "maxlength": 9,
+    "thousandSeparator": ",",
+    "controlName": "salaryReturn",
+    "notificationList": [
+      {
+        "notificationType": "required",
+        "text": "שדה חובה"
+      }
+    ]
+  },
+  {
+    "name": "salary",
+    "label": "מה השכר נטו שלכם כזוג?",
+    "inputType": "text",
+    "mask": "separator",
+    "maxlength": 7,
+    "thousandSeparator": ",",
+    "controlName": "salary",
+    "notificationList": [
+      {
+        "notificationType": "required",
+        "text": "שדה חובה"
+      }
+    ]
+  },
+  {
+    "name": "expenses",
+    "label": "מהו גובה תשלום ההוצאה החודשית שלכם על דיור?\nשכר דירה או משכנתא",
+    "inputType": "text",
+    "mask": "separator",
+    "maxlength": 6,
+    "thousandSeparator": ",",
+    "controlName": "expenses",
+    "notificationList": [
+      {
+        "notificationType": "required",
+        "text": "שדה חובה"
+      }
+    ]
+  },
+  {
+    "name": "equity",
+    "label": "כמה הון עצמי נזיל יש לכם (עזרה מהמשפחה, פקדונות, חסכונות, קופות גמל, קרנות השתלמות, ניירות ערך וכיו'ב)",
+    "moreLabel": "שימו לב: אם אתם בעלי נכס - אין להתחשב בהון ממכירת הנכס הקיים",
+    "inputType": "text",
+    "mask": "separator",
+    "maxlength": 9,
+    "thousandSeparator": ",",
+    "controlName": "equity",
+    "notificationList": [
+      {
+        "notificationType": "required",
+        "text": "שדה חובה"
+      }
+    ]
+  },
+  {
+    "name": "who",
+    "label": "האם בכוונתכם לרכוש דירה יחידה?",
+    "inputType": "radio",
+    "controlName": "who",
+    "radioList": [
+      {
+        "value": 75,
+        "text": "באים לרכוש דירה יחידה (אין בבעלותכם נכס כיום)"
+      },
+      {
+        "value": 70,
+        "text": "יש בבעלותכם נכס ואתם מבקשים לעבור לדירה אחרת ולמכור בהמשך את הנכס הקיים"
+      },
+      {
+        "value": 60,
+        "text": "מבקשים לרכוש עוד דירה"
+      }
+    ],
+    "notificationList": [
+      {
+        "notificationType": "required",
+        "text": "שדה חובה"
+      }
+    ]
+  }
+]

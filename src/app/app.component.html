@@ -1,0 +1,17 @@
+<div
+  class="all-page"
+  *ngIf="appProperties"
+  [class.tablet-view]="!appProperties.isDesktop"
+  [class.desktop-view]="appProperties.isDesktop"
+  [class.under-1680]="(appProperties.isUnder1680$ | async) === true"
+  [class.above-1680]="(appProperties.isUnder1680$ | async) !== true"
+  [class.ie-support]="appProperties.isIE === true"
+  [class.rtl]="(appProperties.isRtl$ | async) === true"
+  [class.ltr]="(appProperties.isRtl$ | async) !== true"
+>
+  <app-header></app-header>
+  <div class="main-zone">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+

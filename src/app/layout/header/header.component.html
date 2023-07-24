@@ -1,0 +1,10 @@
+<ul ngbNav class="nav-tabs">
+  <img src = 'https://cfir-tech.com/project/mygenie/assets/logo.png'/>
+  <ng-container *ngIf="links">
+    <li ngbNavItem *ngFor="let link of links">
+      <a ngbNavLink [routerLink]="link.fragment">{{ link.title }}</a>
+    </li>
+  </ng-container>
+  <h1>12 שאלות ב-12 שניות בכדאי לגלות איזו דירה אתם יכולים לרכוש, כמה משכנתא אתם יכולים לקחת ומה יהיה ההחזר החודשי שלכם</h1>
+</ul>
+

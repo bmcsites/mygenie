@@ -1,0 +1,27 @@
+@import "~src/styles/definitions.scss";
+
+.app-modal {
+  display: flex;
+  flex-direction: column;
+  
+  .header {
+  }
+  .body {
+    width: 100%;
+    padding: 20px;
+    min-width: 20vw;
+    min-height: 10rem;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  .footer {
+    width: 100%;
+    background: lighten($cmr-medium-gray, 20%);
+    border-top: lighten($cmr-medium-gray, 10%) 1px solid;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+
