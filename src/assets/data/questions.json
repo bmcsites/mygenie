@@ -1,69 +1,5 @@
 [
   {
-    "name": "name",
-    "label": "שם מלא",
-    "inputType": "text",
-    "mask": null,
-    "maxlength": null,
-    "thousandSeparator": null,
-    "controlName": "name",
-    "notificationList": [
-      {
-        "notificationType": "required",
-        "text": "שם הוא שדה חובה"
-      }
-    ]
-  },
-  {
-    "name": "email",
-    "label": "אימייל",
-    "inputType": "email",
-    "controlName": "email",
-    "mask": null,
-    "maxlength": null,
-    "thousandSeparator": null,
-    "notificationList": [
-      {
-        "notificationType": "email",
-        "text": "Email is not valid"
-      },
-      {
-        "notificationType": "required",
-        "text": "אימייל הוא שדה חובה"
-      }
-    ]
-  },
-  {
-    "name": "phone",
-    "label": "טלפון נייד",
-    "inputType": "text",
-    "controlName": "phone",
-    "mask": "000-0000000",
-    "maxlength": null,
-    "thousandSeparator": null,
-    "notificationList": [
-      {
-        "notificationType": "required",
-        "text": "טלפון הוא שדה חובה"
-      }
-    ]
-  },
-  {
-    "name": "youngAge",
-    "label": "מה הגיל שלך (במידה ואתם זוג מה הגיל הצעיר מבינכם)",
-    "inputType": "text",
-    "controlName": "youngAge",
-    "mask": "00",
-    "maxlength": null,
-    "thousandSeparator": null,
-    "notificationList": [
-      {
-        "notificationType": "required",
-        "text": "שדה חובה"
-      }
-    ]
-  },
-  {
     "name": "existingPropertyValue",
     "label": "במידה ויש לכם נכס? כמה הוא שווה? (אם אין, אנא רישמו 0) ",
     "inputType": "text",
@@ -109,14 +45,14 @@
     ]
   },
   {
-    "name": "salaryReturn",
+    "name": "loanReturn",
     "label": "מהו ההחזר החודשי לכל ההלוואות שלכם (הלוואות עם יתרת תקופה יותר משנה וחצי)?",
     "moreLabel": "לא כולל את המשכנתא",
     "inputType": "text",
     "mask": "separator",
     "maxlength": 9,
     "thousandSeparator": ",",
-    "controlName": "salaryReturn",
+    "controlName": "loanReturn",
     "notificationList": [
       {
         "notificationType": "required",
@@ -125,13 +61,13 @@
     ]
   },
   {
-    "name": "salary",
+    "name": "netIncome",
     "label": "מה השכר נטו שלכם כזוג?",
     "inputType": "text",
     "mask": "separator",
     "maxlength": 7,
     "thousandSeparator": ",",
-    "controlName": "salary",
+    "controlName": "netIncome",
     "notificationList": [
       {
         "notificationType": "required",
@@ -171,10 +107,10 @@
     ]
   },
   {
-    "name": "who",
+    "name": "numberOfProperties",
     "label": "האם בכוונתכם לרכוש דירה יחידה?",
     "inputType": "radio",
-    "controlName": "who",
+    "controlName": "numberOfProperties",
     "radioList": [
       {
         "value": 75,

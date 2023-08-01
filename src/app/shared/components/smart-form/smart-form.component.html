@@ -1,0 +1,53 @@
+<form #form="ngForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form">
+  <div class="card mt-3">
+    <ng-content></ng-content>
+    <div class="card-body row row-cols-1 row-cols-xxl-2" *ngIf="inputLists">
+      <ng-container *ngFor="let inputItem of inputLists; let i = index">
+          <div class="form-group">
+            <ng-container *ngIf="inputItem.inputType !== 'radio'">
+              <label for="{{inputItem.name}}">{{i +1}}. {{inputItem.label}}
+                <ng-container *ngIf="inputItem.moreLabel">{{inputItem.moreLabel}}</ng-container>
+                <ng-container *ngIf="inputItem.info"><i class="bi bi-info-circle" ngbTooltip="{{inputItem.info}}"></i></ng-container>
+                <ng-container *ngIf="controls[inputItem.name].valid">
+                  <img height="20" src = 'https://cfir-tech.com/project/mygenie/assets/logo-icon.png'/>
+                </ng-container>
+              </label>
+              <input
+                id="{{inputItem.name}}"
+                type="{{inputItem.inputType}}"
+                mask="{{inputItem.mask}}"
+                thousandSeparator="{{inputItem.thousandSeparator}}"
+                maxlength="{{inputItem.maxlength}}"
+                [allowNegativeNumbers]="false"
+                formControlName="{{inputItem.controlName}}"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': form.submitted && controls[inputItem.name].invalid }">
+            </ng-container>
+            <ng-container *ngIf="inputItem.inputType === 'radio'">
+              <label for="{{inputItem.name}}">{{i +1}}. {{inputItem.label}}
+                <ng-container *ngIf="inputItem.moreLabel"><br/>{{inputItem.moreLabel}}</ng-container>
+                <ng-container *ngIf="inputItem.info"><i class="bi bi-info-circle" ngbTooltip="{{inputItem.info}}"></i></ng-container>
+                <ng-container *ngIf="controls[inputItem.name].valid">
+                  <img height="20" src = 'https://cfir-tech.com/project/mygenie/assets/logo-icon.png'/>
+                </ng-container>
+              </label>
+              <div class="radio-box">
+                <div class="radio-item" *ngFor="let radio of inputItem.radioList">
+                  <input type="radio" [value]="radio.value" formControlName="{{inputItem.controlName}}" [name]="inputItem.controlName">
+                  <span>{{radio.text}}</span>
+                </div>
+              </div>
+            </ng-container>
+            <app-input-notification
+              *ngIf="form.submitted && controls[inputItem.name]['invalid']"
+              [controls]="controls"
+              [inputObject]="inputItem">
+            </app-input-notification>
+          </div>
+        </ng-container>
+      <div class="form-group">
+        <button type="submit" class="btn btn-success">חשב </button>
+      </div>
+    </div>
+  </div>
+</form>

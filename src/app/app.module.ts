@@ -17,6 +17,9 @@ import { HomeComponent } from './home/home.component';
 import { InputNotificationComponent } from '@shared/components/input-notification/input-notification.component';
 import { InputRadioComponent } from '@shared/components/input-radio/input-radio.component';
 import {NgxMaskModule} from "ngx-mask";
+import { MortgageSumComponent } from './mortgage-sum/mortgage-sum.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import {SmartFormComponent} from "@shared/components/smart-form/smart-form.component";
 
 @NgModule({
   declarations: [
@@ -25,9 +28,12 @@ import {NgxMaskModule} from "ngx-mask";
     AppModalComponent,
     HeaderComponent,
     SmartTableComponent,
+    SmartFormComponent,
     HomeComponent,
     InputNotificationComponent,
-    InputRadioComponent
+    InputRadioComponent,
+    MortgageSumComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,

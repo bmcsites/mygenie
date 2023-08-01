@@ -2,6 +2,7 @@
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+@import "~bootstrap-icons/font/bootstrap-icons.css";
 body {
   background-color: rgb(241, 245, 249);
   .main-zone {
@@ -36,3 +37,6 @@ body {
   }
 }
 
+.pre-text {
+  padding: 20px;
+}

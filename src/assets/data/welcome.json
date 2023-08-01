@@ -1,0 +1,145 @@
+[
+  {
+    "name": "name",
+    "label": "שם מלא",
+    "inputType": "text",
+    "controlName": "name",
+    "mask": null,
+    "maxlength": null,
+    "thousandSeparator": null,
+    "notificationList": [
+      {
+        "notificationType": "required",
+        "text": "שם הוא שדה חובה"
+      }
+    ]
+  },
+  {
+    "name": "email",
+    "label": "אימייל",
+    "inputType": "email",
+    "controlName": "email",
+    "mask": null,
+    "maxlength": null,
+    "thousandSeparator": null,
+    "notificationList": [
+      {
+        "notificationType": "email",
+        "text": "Email is not valid"
+      },
+      {
+        "notificationType": "required",
+        "text": "אימייל הוא שדה חובה"
+      }
+    ]
+  },
+  {
+    "name": "phone",
+    "label": "טלפון נייד",
+    "inputType": "text",
+    "controlName": "phone",
+    "mask": "000-0000000",
+    "maxlength": null,
+    "thousandSeparator": null,
+    "notificationList": [
+      {
+        "notificationType": "required",
+        "text": "טלפון הוא שדה חובה"
+      }
+    ]
+  },
+  {
+    "name": "youngAge",
+    "label": "מה הגיל שלך",
+    "info": "במידה ואתם זוג מה הגיל הצעיר מבינכם",
+    "inputType": "text",
+    "controlName": "youngAge",
+    "mask": "00",
+    "maxlength": null,
+    "thousandSeparator": null,
+    "notificationList": [
+      {
+        "notificationType": "required",
+        "text": "שדה חובה"
+      }
+    ]
+  },
+  {
+    "name": "gift",
+    "label": "מהי ההטבה הרלבנטית ביותר עבורכם שתעזור לכם לרכוש דירה בפרויקט?",
+    "info": "אנו נדאג למקסם עבורכם את ההטבות מהפרויקט - עזרו לנו לדייק מה נכון עבורכם",
+    "inputType": "radio",
+    "controlName": "gift",
+    "radioList": [
+      {
+        "value": 1,
+        "text": "תנאי תשלום נוחים, אין לנו 20% כי עדיין לא מכרנו את דירתנו הקיימת"
+      },
+      {
+        "value": 2,
+        "text": "חנייה כפולה / מחסן"
+      },
+      {
+        "value": 3,
+        "text": "מטבח משודרג"
+      },
+      {
+        "value": 4,
+        "text": "עיצוב פנים"
+      },
+      {
+        "value": 5,
+        "text": "אחר"
+      }
+    ],
+    "notificationList": [
+      {
+        "notificationType": "required",
+        "text": "שדה חובה"
+      }
+    ]
+  },
+  {
+    "name": "stop",
+    "label": "מה עצר בעדכם עד כה מלרכוש דירה בפרויקט?",
+    "info": "הי הסיבה שכרגע מפריעה לכם לרכוש דירה חדשה בפרויקט, יש סיכוי גבוה שתרוויחו מכך",
+    "inputType": "radio",
+    "controlName": "stop",
+    "radioList": [
+      {
+        "value": 1,
+        "text": "ריביות המשכנתא גבוהות"
+      },
+      {
+        "value": 2,
+        "text": "ההחזר החודשי מרתיע אותנו"
+      },
+      {
+        "value": 3,
+        "text": "מחירי הנדל'ן גבוהים"
+      },
+      {
+        "value": 4,
+        "text": "טרם מכרנו את דירתנו הקיימת"
+      },
+      {
+        "value": 5,
+        "text": "חסר לנו הון עצמי"
+      },
+      {
+        "value": 6,
+        "text": "לא היינו מוכנים לקחת משכנתא כרגע"
+      },
+      {
+        "value": 7,
+        "text": "אחר"
+      }
+    ],
+    "notificationList": [
+      {
+        "notificationType": "required",
+        "text": "שדה חובה"
+      }
+    ]
+  }
+]

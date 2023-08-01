@@ -1,44 +1,5 @@
-<form #form="ngForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form">
-  <div class="card mt-3">
-    <div class="card-body" *ngIf="inputLists">
-      <ng-container *ngFor="let inputItem of inputLists; let i = index">
-          <div class="form-group">
-            <ng-container *ngIf="inputItem.inputType !== 'radio'">
-              <label for="{{inputItem.name}}">{{i +1}}. {{inputItem.label}}
-                <ng-container *ngIf="inputItem.moreLabel"><br/>{{inputItem.moreLabel}}</ng-container>
-              </label>
-              <input
-                id="{{inputItem.name}}"
-                type="{{inputItem.inputType}}"
-                mask="{{inputItem.mask}}"
-                thousandSeparator="{{inputItem.thousandSeparator}}"
-                maxlength="{{inputItem.maxlength}}"
-                [allowNegativeNumbers]="false"
-                formControlName="{{inputItem.controlName}}"
-                class="form-control"
-                [ngClass]="{ 'is-invalid': form.submitted && controls[inputItem.name].invalid }">
-            </ng-container>
-            <ng-container *ngIf="inputItem.inputType === 'radio'">
-              <label for="{{inputItem.name}}">{{i +1}}. {{inputItem.label}}
-                <ng-container *ngIf="inputItem.moreLabel"><br/>{{inputItem.moreLabel}}</ng-container>
-              </label>
-              <div class="radio-box">
-                <div class="radio-item" *ngFor="let radio of inputItem.radioList">
-                  <input type="radio" [value]="radio.value" formControlName="{{inputItem.controlName}}" [name]="inputItem.controlName">
-                  <span>{{radio.text}}</span>
-                </div>
-              </div>
-            </ng-container>
-            <app-input-notification
-              *ngIf="form.submitted && controls['email']['invalid']"
-              [controls]="controls"
-              [inputObject]="inputItem">
-            </app-input-notification>
-          </div>
-        </ng-container>
-      <div class="form-group">
-        <button type="submit" class="btn btn-success">חשב </button>
-      </div>
-    </div>
+<app-smart-form [loginForm]="loginForm" [inputLists]="inputLists" (action)="formSent($event)">
+  <div class="pre-text">
+    <h3>ברוכים הבאים לשאלון שלנו, תודה שהצטרפתם, אתם כבק בשלבים מתקדמים לקראת דירת החלומות שלכם.</h3>
   </div>
-</form>
+</app-smart-form>
