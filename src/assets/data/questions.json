@@ -131,5 +131,56 @@
         "text": "שדה חובה"
       }
     ]
+  },
+  {
+    "name": "wantedReturn",
+    "label": "מהו ההחזר החודשי שהייתם מצפים לשלם על המשכנתא בדירה החדשה?",
+    "info": "מה נראה לכם סכום חודשי הגיוני שיצא לכם לשלם ותוכלו לעמוד בו?",
+    "inputType": "text",
+    "mask": "separator",
+    "maxlength": 6,
+    "thousandSeparator": ",",
+    "controlName": "wantedReturn",
+    "notificationList": [
+      {
+        "notificationType": "required",
+        "text": "שדה חובה"
+      }
+    ]
+  },
+  {
+    "name": "stopInProject",
+    "label": "האם יש עניין שעצר אתכם לרכוש דירה בפרויקט הספציפי?",
+    "info": "אנו מבקשים להשתפר כל הזמן, עבורכם ועבור אחרים",
+    "inputType": "radio",
+    "controlName": "stopInProject",
+    "radioList": [
+      {
+        "value": 1,
+        "text": "היה חסר לכם מידע בפרסום שמנע מכם לקבוע פגישה באתר הפרויקט"
+      },
+      {
+        "value": 2,
+        "text": "אתם מעוניינים אבל טרם הזדמן לכם להזמין פגישה בפרויקט"
+      },
+      {
+        "value": 3,
+        "text": "הייתם בפגישה במשרדי הפרויקט והיה חסר לכם משהו כדי להתקדם לרכישה"
+      },
+      {
+        "value": 4,
+        "text": "נציגי הפרויקט לא סיפקו לכם חוויה טובה"
+      },
+      {
+        "value": 5,
+        "text": "הייתם בפגישה ואתם רוצים לרכוש דירה אבל פשוט לא הגעתם לזה"
+      }
+    ],
+    "notificationList": [
+      {
+        "notificationType": "required",
+        "text": "שדה חובה"
+      }
+    ]
   }
 ]

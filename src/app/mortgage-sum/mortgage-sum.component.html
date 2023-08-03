@@ -1,27 +1,36 @@
-<div class="all-sum-page">
-  <div class="my-total-info-zone">
-    <div class="my-details-information">
-      <li><label class="name">שם</label></li>
-      <li><label class="youngAge">גיל</label></li>
-      <li><label class="phone">טלפון</label></li>
-      <li><label class="email">אימייל</label></li>
-      <li><label class="gift">המתנה שבחרת</label></li>
+<div class="card mt-3">
+  <div class="all-sum-page card-body">
+    <div class="my-total-info-zone">
+      <h3> שלום {{mortgage.name}} תודה שהשתתפתם באתגר שלנו </h3><br>
+      <div class="my-details-information">
+        <span style="font-weight: bold; padding: 10px">על פי הנתונים שמילאתם:</span>
+        <li><label class="phone">טלפון</label><span>&nbsp;</span> {{mortgage.phone}}</li>
+        <li><label class="email">אימייל</label><span>&nbsp;</span> {{mortgage.email}}</li>
+        <li><label class="youngAge">גיל האדם הצעיר מביניכם:</label><span>&nbsp;</span> {{mortgage.youngAge}}</li>
+        <li><label class="gift">ההטבה שבחרת</label><span>&nbsp;</span> {{mortgage.gift}}</li>
+      </div>
+      <div class="my-mortgage-information">
+        <li><label class="numberOfProperties">האם יש בבעלותכם נכס</label> {{mortgage.numberOfProperties}}</li>
+        <li><label class="mortgage">משכנתא קיימת</label><span>&nbsp;</span> {{mortgage.mortgage}}</li>
+        <li><label class="loan">הלוואת קיימות</label> <span>&nbsp;</span>{{mortgage.loan}}</li>
+        <li><label class="loanReturn">החזר משכנתא קיים</label><span>&nbsp;</span> {{mortgage.loanReturn}}</li>
+        <li><label class="netIncome">גובה משכורת</label><span>&nbsp;</span> {{mortgage.netIncome}}</li>
+        <li><label class="expenses">הוצאות</label><span>&nbsp;</span> {{mortgage.expenses}}</li>
+        <li><label class="equity">הון עצמי</label><span>&nbsp;</span> {{mortgage.equity}}</li>
+        <li><label class="existingPropertyValue">שובי ערך נכס קיים</label><span>&nbsp;</span> {{mortgage.existingPropertyValue}}</li>
+      </div>
     </div>
-    <div class="my-mortgage-information">
-      <li><label class="numberOfProperties">האם יש בבעלותכם נכס</label></li>
-      <li><label class="mortgage">משכנתא קיימת</label></li>
-      <li><label class="loan">הלוואת קיימות</label></li>
-      <li><label class="loanReturn">החזר משכנתא קיים</label></li>
-      <li><label class="netIncome">גובה משכורת</label></li>
-      <li><label class="expenses">הוצאות</label></li>
-      <li><label class="equity">הון עצמי</label></li>
-      <li><label class="existingPropertyValue">שובי ערך נכס קיים</label></li>
+    <div class="my-mortgage-calc-zone">
+      <br>
+<!--      <li><label class="totalEquity">הון עצמי</label><span>&nbsp;</span> {{mortgage.totalEquity}}</li>-->
+<!--      <li><label class="maxMortgageReturn">משכנתא מקסימלית</label><span>&nbsp;</span> {{mortgage.maxMortgageReturn}}</li>-->
+<!--      <li><label class="maxMortgageHeight">גובה משכנתא</label><span>&nbsp;</span> {{mortgage.MaxMortgageHeight}}</li>-->
+<!--      <li><label class="PurchaseAmount">גובה הרכישה</label><span>&nbsp;</span> {{mortgage.PurchaseAmount}}</li>-->
+      <p>אז בואו נלמד מה עשויים להיות הנתונים שלכם לחלום הדירה הבא: <br>
+        על פי הכנסותכם, סביר לבקש משכנתא בגובה: {{mortgage.maxMortgageHeight}}  (בפריסה מקסימלית לפי גילכם)<br>
+        במידה והייתם לוקחים את המשכנתא היום ההחזר החודשי היה עומד על: {{mortgage.maxMortgageReturn}}
+      </p>
     </div>
   </div>
-  <div class="my-mortgage-calc-zone">
-    <li><label class="totalEquity">הון עצמי</label></li>
-    <li><label class="maxMortgageReturn">משכנתא מקסימלית</label></li>
-    <li><label class="MaxMortgageHeight">גובה משכנתא</label></li>
-    <li><label class="PurchaseAmount">גובה הרכישה</label></li>
-  </div>
+
 </div>

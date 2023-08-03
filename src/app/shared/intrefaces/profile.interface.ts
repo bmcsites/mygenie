@@ -50,12 +50,14 @@ export interface MortgageInfo extends UserInfo{
   expenses: string;
   equity: string;
   existingPropertyValue: string;
+  wantedReturn: string;
+  stopInProject: string;
 }
 
 export interface FullMortgageInfo extends MortgageInfo{
   totalEquity: string;
   maxMortgageReturn: string;
-  MaxMortgageHeight: string;
+  maxMortgageHeight: string;
   PurchaseAmount: string;
 }
 

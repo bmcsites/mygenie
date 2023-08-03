@@ -1,6 +1,6 @@
 .radio-box {
   display: flex;
-  padding: 10px 0;
+  padding: 0 20px;
   justify-content: center;
   gap: 10px;
   flex-direction: column;
@@ -11,4 +11,13 @@
 }
 .form-group {
   padding: 15px;
+  label {
+    font-weight: bold;
+    margin-bottom: 13px;
+  }
+}
+.footer-text {
+  padding: 20px;
+  font-style: italic;
+  font-size: 20px;
 }

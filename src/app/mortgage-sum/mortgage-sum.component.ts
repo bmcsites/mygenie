@@ -11,7 +11,9 @@ export class MortgageSumComponent implements OnInit {
 
   mortgage!: FullMortgageInfo;
 
-  constructor(private mortgageService: MortgageService) { }
+  constructor(private mortgageService: MortgageService) {
+    this.mortgageService.setHeaderText('חלום הדירה במרחק לחיצה רגע לפני שהוא מתרחק');
+  }
 
   ngOnInit(): void {
     this.mortgageService.getMortgageFromLocalHost().subscribe( (value: any) => {

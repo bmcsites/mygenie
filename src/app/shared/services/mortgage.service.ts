@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, ReplaySubject} from "rxjs";
-import {Validators} from "@angular/forms";
+import {ReplaySubject, take} from "rxjs";
 import {Router} from "@angular/router";
 import {MortgageInfo, UserInfo} from "@shared/intrefaces/profile.interface";
 
@@ -12,8 +11,17 @@ export class MortgageService {
 
   private mortgageInfo$: ReplaySubject<MortgageInfo> = new ReplaySubject<MortgageInfo>();
   private userInfo$: ReplaySubject<UserInfo> = new ReplaySubject<UserInfo>();
+  private headerText$: ReplaySubject<string> = new ReplaySubject<string>();
 
   constructor(private router: Router) { }
+
+  setHeaderText(e: string) {
+    this.headerText$.next(e);
+  }
+
+  getHeaderText() {
+    return this.headerText$;
+  }
 
   changeRoute(route: string) {
     console.log(route);
@@ -28,8 +36,25 @@ export class MortgageService {
     // if maxMortgageHeight = 0 , then age is not available
     const maxMortgageHeight = this.calcMaxMortgageHeight(maxMortgageReturn, info.youngAge);
 
+    if(maxMortgageHeight == 0) {
+      return [0, 'הגיל אינו עונה על הדרישות'];
+    }
+
     // if purchaseAmount = 0 , then totalEquity is too low.
-    const purchaseAmount = this.calcPurchaseAmount(totalEquity, maxMortgageHeight);
+    const purchaseAmount = this.calcPurchaseAmount(totalEquity, maxMortgageHeight, info.numberOfProperties);
+
+    if(purchaseAmount == 0) {
+      return [0, 'ההון עצמי אינו עונה על הדרישות'];
+    }
+
+    const moreInfo = {
+      totalEquity: totalEquity,
+      maxMortgageReturn: maxMortgageReturn,
+      maxMortgageHeight: maxMortgageHeight,
+      purchaseAmount: purchaseAmount
+    }
+
+    return [1, 'הכל עבר בהצלחה', moreInfo]
   }
 
   getUserInfo() {
@@ -57,6 +82,12 @@ export class MortgageService {
       MortgageInfo['expenses'] = localStorage.getItem('expenses');
       MortgageInfo['equity'] = localStorage.getItem('equity');
       MortgageInfo['existingPropertyValue'] = localStorage.getItem('existingPropertyValue');
+      MortgageInfo['wantedReturn'] = localStorage.getItem('wantedReturn');
+      MortgageInfo['stopInProject'] = localStorage.getItem('stopInProject');
+      MortgageInfo['totalEquity'] = localStorage.getItem('totalEquity')? localStorage.getItem('totalEquity') : 0;
+      MortgageInfo['maxMortgageReturn'] = localStorage.getItem('maxMortgageReturn')? localStorage.getItem('maxMortgageReturn') : 0;
+      MortgageInfo['maxMortgageHeight'] = localStorage.getItem('maxMortgageHeight')? localStorage.getItem('maxMortgageHeight') : 0;
+      MortgageInfo['purchaseAmount'] = localStorage.getItem('purchaseAmount')? localStorage.getItem('purchaseAmount') : 0;
       this.mortgageInfo$.next(MortgageInfo);
     }
     return this.mortgageInfo$;
@@ -81,23 +112,34 @@ export class MortgageService {
     localStorage.setItem('expenses', info.expenses);
     localStorage.setItem('equity', info.equity);
     localStorage.setItem('existingPropertyValue', info.existingPropertyValue);
-    let myUserInfo: any = {};
+    localStorage.setItem('wantedReturn', info.wantedReturn);
+    localStorage.setItem('stopInProject', info.stopInProject);
+    let mortgageInfo: any = {};
     if(localStorage.getItem('name')) {
-      this.getUserInfo().subscribe((val: UserInfo) => {
-        myUserInfo = val;
+      this.getMortgageFromLocalHost().pipe(take(1)).subscribe((val: UserInfo) => {
+        console.log('mortgageInfo: ', mortgageInfo);
+        let calcMortgage = this.calcMortgage(val);
+        this.joinData(calcMortgage, val);
       });
     }
-    let mortgageInfo = Object.assign(info, myUserInfo)
-    console.log('mortgageInfo: ', mortgageInfo);
-    this.mortgageInfo$.next(mortgageInfo);
-    this.calcMortgage(mortgageInfo);
+  }
+
+  joinData(calcData: any, mortgageInfo: any) {
+    if(calcData[0] == 1) {
+      console.log(calcData[1]);
+      const allMortgageInfo = Object.assign(calcData[2], mortgageInfo);
+      this.mortgageInfo$.next(allMortgageInfo);
+      this.changeRoute('mortgage-sam');
+    } else {
+      alert(calcData[1])
+    }
   }
 
   // הון עצמי
   calcEquity(existingPropertyValue: string, mortgage: string, loan: string, equity: string) {
     const totalEquity: number = (Number(existingPropertyValue) - Number(mortgage) - Number(loan)) + Number(equity);
-    localStorage.setItem('totalEquity', JSON.stringify(totalEquity));
-    return totalEquity;
+    localStorage.setItem('totalEquity', JSON.stringify(Math.floor(totalEquity)));
+    return Math.floor(totalEquity);
   }
 
   // הכנסה פנויה
@@ -110,17 +152,16 @@ export class MortgageService {
   // משכנתא המקסימלית
   calcmMaxMortgageReturn(netIncome: number) {
     const maxMortgageReturn =  netIncome * 0.39;
-    localStorage.setItem('maxMortgageReturn', JSON.stringify(maxMortgageReturn));
-    return maxMortgageReturn;
+    localStorage.setItem('maxMortgageReturn', JSON.stringify(Math.floor(maxMortgageReturn)));
+    return Math.floor(maxMortgageReturn);
   }
 
   // גובה משכנתא
   calcMaxMortgageHeight(maxMortgageReturn: number, youngAge: string) {
-    let plugNumber: number;
+    let plugNumber: number = 0;
     const age = Number(youngAge);
     const period = 80 - Number(age);
     let maxMortgageHeight: number;
-
     if ( age < 18 || age > 60) {
       maxMortgageHeight = 0;
     } else {
@@ -135,8 +176,8 @@ export class MortgageService {
       }
       maxMortgageHeight =  (maxMortgageReturn / plugNumber) * 100000;
     }
-    localStorage.setItem('maxMortgageHeight', JSON.stringify(maxMortgageHeight));
-    return maxMortgageHeight;
+    localStorage.setItem('maxMortgageHeight', JSON.stringify(Math.floor(maxMortgageHeight)));
+    return Math.floor(maxMortgageHeight);
   }
 
   // גובה הרכישה
@@ -155,8 +196,8 @@ export class MortgageService {
       purchaseAmount = totalEquity + maxMortgageHeight;
     }
 
-    localStorage.setItem('purchaseAmount', JSON.stringify(purchaseAmount));
-    return purchaseAmount;
+    localStorage.setItem('purchaseAmount', JSON.stringify(Math.floor(purchaseAmount)));
+    return Math.floor(purchaseAmount);
   }
 }
 // שלב ראשון שליחת מייל פרטים, שלב שלישי שליחת מייל הכל

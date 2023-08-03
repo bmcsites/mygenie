@@ -12,6 +12,7 @@ import {ApiService} from "@shared/services/api.service";
 export class SmartFormComponent implements OnInit {
 
   @Input() loginForm!: any;
+  @Input() footerText!: any;
   @Input() inputLists!: InputObj[];
   @Output() action = new EventEmitter<string>();
 

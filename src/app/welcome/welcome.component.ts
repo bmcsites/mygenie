@@ -3,7 +3,6 @@ import {FormBuilder, Validators} from "@angular/forms";
 import {ApiService} from "@shared/services/api.service";
 import {environment} from "@env/environment";
 import {InputObj} from "@shared/intrefaces/profile.interface";
-import {Router} from "@angular/router";
 import {MortgageService} from "@shared/services/mortgage.service";
 
 @Component({
@@ -15,8 +14,12 @@ import {MortgageService} from "@shared/services/mortgage.service";
 export class WelcomeComponent implements OnInit {
   loginForm!: any;
   inputLists!: InputObj[];
+  footerText!: string;
 
-  constructor(private formBuilder: FormBuilder, private apiService: ApiService, private mortgageService: MortgageService) { }
+  constructor(private formBuilder: FormBuilder, private apiService: ApiService, private mortgageService: MortgageService) {
+    this.footerText = 'אתם מרחק של פחות מדקה מלהגשים חלום ולרכוש דירה חדשה מקבלן רגע לפני עליית המחירים הבאה';
+    this.mortgageService.setHeaderText('חלום הדירה במרחק לחיצה רגע לפני שהוא מתרחק');
+  }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({

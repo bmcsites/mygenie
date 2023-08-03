@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {AbstractControl, FormBuilder, Validators} from "@angular/forms";
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, Validators} from "@angular/forms";
 import {InputObj} from "@shared/intrefaces/profile.interface";
 import {ApiService} from "@shared/services/api.service";
 import {environment} from "@env/environment";
@@ -14,7 +14,9 @@ export class HomeComponent implements OnInit {
   loginForm!: any;
   inputLists!: InputObj[];
 
-  constructor(private formBuilder: FormBuilder, private apiService: ApiService, private mortgageService: MortgageService) { }
+  constructor(private formBuilder: FormBuilder, private apiService: ApiService, private mortgageService: MortgageService) {
+    this.mortgageService.setHeaderText('חלום הדירה במרחק לחיצה רגע לפני שהוא מתרחק');
+  }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -26,6 +28,8 @@ export class HomeComponent implements OnInit {
       expenses: ['', [Validators.required]],
       equity: ['', [Validators.required]],
       existingPropertyValue: ['', [Validators.required]],
+      wantedReturn: ['', [Validators.required]],
+      stopInProject: ['', [Validators.required]],
     });
     this.apiService.Get(environment.url + 'assets/data/questions.json').subscribe( (q: InputObj[]) => {
       this.inputLists = q;
@@ -34,9 +38,6 @@ export class HomeComponent implements OnInit {
 
   formSent(e: any)  {
     this.mortgageService.setMortgageInfo(e.value);
-    console.log(e.value);
-    this.mortgageService.changeRoute('mortgage-sam');
+      console.log(e.value);
   }
-
-
 }
