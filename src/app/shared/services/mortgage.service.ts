@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {ReplaySubject, take} from "rxjs";
 import {Router} from "@angular/router";
 import {MortgageInfo, UserInfo} from "@shared/intrefaces/profile.interface";
+import {ApiService} from "@shared/services/api.service";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class MortgageService {
   private userInfo$: ReplaySubject<UserInfo> = new ReplaySubject<UserInfo>();
   private headerText$: ReplaySubject<string> = new ReplaySubject<string>();
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private apiService: ApiService) { }
 
   setHeaderText(e: string) {
     this.headerText$.next(e);
@@ -101,6 +102,11 @@ export class MortgageService {
     localStorage.setItem('gift', info.gift);
     localStorage.setItem('stop', info.stop);
     this.userInfo$.next(info);
+    const res = this.readyPostObj(info);
+    const url =  'https://rest.smoove.io/v1/async/contacts';
+    this.apiService.post(url, res).subscribe( (val: any) => {
+      console.log(val);
+    });
   }
 
   setMortgageInfo(info: any) {
@@ -199,5 +205,22 @@ export class MortgageService {
     localStorage.setItem('purchaseAmount', JSON.stringify(Math.floor(purchaseAmount)));
     return Math.floor(purchaseAmount);
   }
+
+  readyPostObj (info: any) {
+    return     {
+      email: info.email,
+      cellPhone: info.phone,
+      firstName: info.name,
+      lastName: info.name,
+      customFields: {
+        youngAge: info.youngAge,
+        gift: info.gift,
+        stop: info.stop,
+      }
+    }
+  }
 }
+
+
+
 // שלב ראשון שליחת מייל פרטים, שלב שלישי שליחת מייל הכל

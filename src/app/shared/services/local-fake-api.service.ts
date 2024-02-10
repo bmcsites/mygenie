@@ -8,7 +8,7 @@ import {Observable} from "rxjs";
 export class LocalFakeApiService {
   constructor(protected http: HttpClient) {}
 
-  public Get(fullUrl: string): Observable<any> {
+  public get(fullUrl: string): Observable<any> {
     return this.http.get(`${fullUrl}`);
   }
 

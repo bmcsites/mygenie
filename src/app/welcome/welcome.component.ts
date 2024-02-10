@@ -31,7 +31,7 @@ export class WelcomeComponent implements OnInit {
       stop: ['', [Validators.required]],
     });
 
-    this.apiService.Get(environment.url + 'assets/data/welcome.json').subscribe( (q: InputObj[]) => {
+    this.apiService.get(environment.url + 'assets/data/welcome.json').subscribe( (q: InputObj[]) => {
       this.inputLists = q;
     })
   }

@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
       wantedReturn: ['', [Validators.required]],
       stopInProject: ['', [Validators.required]],
     });
-    this.apiService.Get(environment.url + 'assets/data/questions.json').subscribe( (q: InputObj[]) => {
+    this.apiService.get(environment.url + 'assets/data/questions.json').subscribe( (q: InputObj[]) => {
       this.inputLists = q;
     })
   }
